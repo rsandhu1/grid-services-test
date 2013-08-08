@@ -36,7 +36,7 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="classname">org.ogce.jobsubmission.JobSubmissionTest</stringProp>
+          <stringProp name="classname">org.ogce.grid.services.GramJobSubmissionTest</stringProp>
         </JavaSampler>
         <hashTree/>
       </hashTree>
