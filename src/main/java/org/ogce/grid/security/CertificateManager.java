@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2009 Pervasive Lab, Indiana University. All rights reserved.
- *
- * This software is open source. See the bottom of this file for the license.
- *
- * $Id: $
- */
 package org.ogce.grid.security;
 
 import java.io.InputStream;
