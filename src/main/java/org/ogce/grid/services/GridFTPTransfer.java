@@ -27,7 +27,7 @@ import org.ietf.jgss.GSSCredential;
 import org.ogce.grid.security.ApplicationContext;
 import org.ogce.grid.utils.GridFtp;
 
-public class FileTransfer {
+public class GridFTPTransfer {
 
 	public void makeDir(GSSCredential gssCred, URI destURI) throws Exception {
 		GridFtp ftp = new GridFtp();
@@ -46,29 +46,19 @@ public class FileTransfer {
 		URI destURI = GridFtp.createGsiftpURI(targetERP, remoteDestFile);
 		ftp.transfer(srcURI, destURI, gssCred, true);
 	}
-
-	public static void main(String[] args) {
-		try {
-			BasicConfigurator.configure();
-			ApplicationContext context = new ApplicationContext();
-			context.login();
-			FileTransfer fileTransfer = new FileTransfer();
-
-			String sourceERP = "";
-			String remoteSrcFile = "";
-			String targeterp = "";
-			String remoteDestFile = "";
-			URI srcURI = GridFtp.createGsiftpURI(sourceERP, remoteSrcFile);
-			URI destURI = GridFtp.createGsiftpURI(targeterp, remoteDestFile);
-			URI dirLocation = GridFtp.createGsiftpURI(targeterp,
-					remoteDestFile.substring(0, remoteDestFile.lastIndexOf("/")));
-			GSSCredential gssCredential = context.getGssCredential();
-			fileTransfer.makeDir(gssCredential, dirLocation);
-			fileTransfer.transferData(gssCredential, srcURI, destURI);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+	public void gridFTPTransfer(String sourceEPR, String srcFile, String targetEPR, String destFile) throws Exception{
+	    BasicConfigurator.configure();
+        ApplicationContext context = new ApplicationContext();
+        context.login();
+        GridFTPTransfer fileTransfer = new GridFTPTransfer();
+        URI srcURI = GridFtp.createGsiftpURI(sourceEPR, srcFile);
+        URI destURI = GridFtp.createGsiftpURI(targetEPR, destFile);
+        URI dirLocation = GridFtp.createGsiftpURI(targetEPR,
+                destFile.substring(0, destFile.lastIndexOf("/")));
+        GSSCredential gssCredential = context.getGssCredential();
+        fileTransfer.makeDir(gssCredential, dirLocation);
+        fileTransfer.transferData(gssCredential, srcURI, destURI);
 
 	}
 }

@@ -36,9 +36,6 @@ import org.slf4j.LoggerFactory;
  */
 public class ApplicationContext {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2270092298283648553L;
 
 	private Properties properties;
